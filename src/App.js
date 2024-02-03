@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { Container, Row, Col, Card } from "react-bootstrap";
+import "./App.css";
+import { getCategories,getQuestionsByCategories } from "./services/quizService";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [questions, setQuestions] = useState(null);
+  useEffect(() => {
+    getQuestionsByCategories(9,'easy').then((res) => {
+      setQuestions(res.result);
+      console.log(res);
+    });
+  }, [setQuestions]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container fluid bg="danger">
+      <Row>
+        <Col>
+          <Card body color="light-blue">
+            {questions &&
+              questions.map((question,index) => (
+                <question value={index} key={index}>
+                  {question.question}
+                </question>
+              ))}
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
