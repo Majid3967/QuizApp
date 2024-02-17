@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export default function Main(props) {
 
-const {categories} = props;
+const {categories,getQuestions} = props;
 
 const diffcultyLevel = [{id:0,name:'Easy'},{id:1,name:'Medium'},{id:2,name:'Hard'}];
 
@@ -13,13 +13,15 @@ const [questionCategory, setQuestionCategory] = useState(0);
 const [difficulty, setDifficulty] = useState('Easy');
 
 const handleDifficultyChange = (event) => {
-    console.log(event.target.value)
     setDifficulty(event.target.value);
 }
 
 const handleCategoryChange = (event) => {
-    console.log(event.target.value);
     setQuestionCategory(event.target.value);
+}
+
+const handleGetQuestions = () => {
+  getQuestions(questionCategory,difficulty.toLowerCase());
 }
 
   return (
@@ -62,7 +64,7 @@ const handleCategoryChange = (event) => {
         </Row>
         <Row>
           <Col className='custom-button'>
-            <Button variant="dark">Start</Button>
+            <Button variant="dark" onClick={handleGetQuestions}>Start</Button>
           </Col>
         </Row>
       </Container>
