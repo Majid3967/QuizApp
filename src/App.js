@@ -23,17 +23,22 @@ function App() {
     });
   }
 
+  const retry = () => {
+    setQuestions(null);
+  }
+
   
 
   return (
     <>
-      <Card className="main-card">
+      {categories && <Card className="main-card">
         <Image src="images/ideas.png" className="main-icon"/>
         <h2>Quiz</h2>
         {!questions && categories && <Main categories={categories} getQuestions={getQuestions}/>}
-        {questions && <Question questions={questions}/>}
+        {questions && <Question questions={questions} retry={retry}/>}
         
-      </Card>
+      </Card>}
+      {!categories && <div class="loader"></div>}
     </>
   );
 }

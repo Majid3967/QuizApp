@@ -20,6 +20,7 @@ code {
   background-color: #474F7A !important;
   display: flex;
   align-items: center;
+  max-width: 340px;
 }
 .main-card > *{
   margin: 16px;
@@ -40,4 +41,34 @@ code {
 .custom-button{
   display: flex;
   justify-content: center;
+}
+.question-form{
+  margin-bottom: 16px;
+}
+.question-score{
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  border: 16px solid #1F2544;
+  border-radius: 50%;
+  border-top: 16px solid #81689D;
+  border-bottom: 16px solid #81689D;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
