@@ -33,7 +33,7 @@ function App() {
     <>
       {categories && <Card className="main-card">
         <Image src="images/ideas.png" className="main-icon"/>
-        <h2>Quiz</h2>
+        {!questions && categories && <h2>Quiz</h2>}
         {!questions && categories && <Main categories={categories} getQuestions={getQuestions}/>}
         {questions && <Question questions={questions} retry={retry}/>}
         
